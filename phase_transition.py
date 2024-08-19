@@ -88,5 +88,5 @@ for jdx in range(sigmas.shape[0]):
         errors_both[lin_size - kdx - 1][jdx] = error_sum_both / iter
 
 # Save data
-with open("errors.pickle", "wb") as f:
+with open("results/errors.pickle", "wb") as f:
     pickle.dump([errors_x, error_u, errors_both], f)
