@@ -50,7 +50,6 @@ def load_mnist(datadir="~/data"):
                              ]))
     def to_xy(dataset):
         Y = dataset.targets.long()
-        # this size is necessary to work with the matmul broadcasting when using channels
         X = dataset.data.view(dataset.data.shape[0], 1, -1) / 255.0
         return X, Y
 
@@ -65,7 +64,6 @@ def load_mnist(datadir="~/data"):
 def make_loader(dataset, shuffle=True, batch_size=128, num_workers=4):
     return torch.utils.data.DataLoader(dataset, batch_size=batch_size, num_workers=num_workers, shuffle=shuffle, pin_memory=True)
 
-# np.random.seed(42)
 if __name__ == '__main__':
     # Core params
     N = 1024
@@ -102,7 +100,7 @@ if __name__ == '__main__':
     norm_xs = []
     tv_us = []
     tv_xs = []
-    end = 100
+    end = 10000
     start = time.time()
     for idx, (y, _) in enumerate(train_dl):
         y = y.squeeze().numpy()
