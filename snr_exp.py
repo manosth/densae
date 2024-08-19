@@ -91,5 +91,5 @@ for jdx in tqdm(range(snrs.shape[0])):
     errors_u_cs[jdx] = error_sum_u_cs / iter
 
 # Save data
-with open("errors_snr.pickle", "wb") as f:
+with open("results/errors_snr.pickle", "wb") as f:
     pickle.dump([errors_u_ours, errors_u_cs], f)
